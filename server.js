@@ -15,6 +15,8 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser()); // Ensure cookie-parser is used
 
+const PORT = process.env.PORT || 3000;
+
 app.post("/signup", async (req, res) => {
   try {
     validateSignUpData(req);
@@ -219,7 +221,7 @@ app.delete('/api/jobs/:id', auth, async (req, res) => {
 connectDB()
   .then(() => {
     console.log("MongoDB connected...");
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
       console.log("Server is running on port 3000...");
     });
   })
